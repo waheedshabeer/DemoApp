@@ -9,13 +9,17 @@ import { AppStackScreenProps } from "../navigators"
 interface TestScreenProps extends AppStackScreenProps<"TestScreen"> {}
 
 export const TestScreen: FC<TestScreenProps> = observer(function TestScreen(_props) {
+  function apiCall() {
+    CounterStore.apiCall()
+  }
   function increment() {
     CounterStore.increment()
   }
-
   function decrement() {
     CounterStore.decrement()
   }
+  const res = CounterStore.response
+  console.log("Result", res)
   return (
     <Screen
       preset="auto"
@@ -39,6 +43,13 @@ export const TestScreen: FC<TestScreenProps> = observer(function TestScreen(_pro
         style={$tapButton}
         preset="reversed"
         onPress={decrement}
+      />
+      <Button
+        testID="Test-button"
+        tx="TestScreen.apiCall"
+        style={$tapButton}
+        preset="reversed"
+        onPress={apiCall}
       />
     </Screen>
   )

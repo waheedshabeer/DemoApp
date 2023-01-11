@@ -2,6 +2,7 @@ const en = {
   TestScreen: {
     increment: "Increment",
     decrement: "Decrement",
+    apiCall: "Api Call",
   },
   common: {
     ok: "OK!",
