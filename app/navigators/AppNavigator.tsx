@@ -18,11 +18,12 @@ import { useColorScheme } from "react-native"
 import Config from "../config"
 import { useStores } from "../models" // @demo remove-current-line
 import {
-  LoginScreen, // @demo remove-current-line
+  // @demo remove-current-line
   WelcomeScreen,
 } from "../screens"
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
+import { TestScreen } from "../screens/TestScreen"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -41,6 +42,7 @@ export type AppStackParamList = {
   Welcome: undefined
   Login: undefined // @demo remove-current-line
   Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
+  TestScreen: undefined
   // 🔥 Your screens go here
 }
 
@@ -80,7 +82,8 @@ const AppStack = observer(function AppStack() {
         </>
       ) : (
         <>
-          <Stack.Screen name="Login" component={LoginScreen} />
+          {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+          <Stack.Screen name="TestScreen" component={TestScreen} />
         </>
       )}
       {/* @demo remove-block-end */}

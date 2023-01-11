@@ -1,11 +1,14 @@
 import { observer } from "mobx-react-lite"
 import React, { FC } from "react"
-import { ViewStyle } from "react-native"
+import { ViewStyle, View } from "react-native"
 import { Button, Screen, Text } from "../components"
 import { spacing } from "../theme"
 import CounterStore from "../stores/TestStore"
+import { AppStackScreenProps } from "../navigators"
 
-export const TestScreen: FC = observer(function (_props) {
+interface TestScreenProps extends AppStackScreenProps<"TestScreen"> {}
+
+export const TestScreen: FC<TestScreenProps> = observer(function TestScreen(_props) {
   function increment() {
     CounterStore.increment()
   }
@@ -19,14 +22,17 @@ export const TestScreen: FC = observer(function (_props) {
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text></Text>
       <Button
         testID="Test-button"
-        tx="TestScreen.incrementTitle"
+        tx="TestScreen.increment"
         style={$tapButton}
         preset="reversed"
         onPress={increment}
       />
+      <View style={$TextView}>
+        <Text>{CounterStore.count}</Text>
+      </View>
+
       <Button
         testID="Test-button"
         tx="TestScreen.decrement"
@@ -47,4 +53,7 @@ const $tapButton: ViewStyle = {
   marginTop: spacing.extraSmall,
 }
 
+const $TextView: ViewStyle = {
+  alignSelf: "center",
+}
 // @demo remove-file

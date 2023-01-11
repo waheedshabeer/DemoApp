@@ -1,4 +1,8 @@
 const en = {
+  TestScreen: {
+    increment: "Increment",
+    decrement: "Decrement",
+  },
   common: {
     ok: "OK!",
     cancel: "Cancel",
