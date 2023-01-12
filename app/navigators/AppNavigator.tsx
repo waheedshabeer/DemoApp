@@ -23,7 +23,10 @@ import {
 } from "../screens"
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
-import { TestScreen } from "../screens/TestScreen"
+// import { TestScreen } from "../screens/TestScreen"
+import Splash from "../screens/Splash"
+import { SignUp } from "../screens/Auth/SignUp"
+import CreateAccount from "../screens/Auth/CreateAccount"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -39,10 +42,13 @@ import { TestScreen } from "../screens/TestScreen"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
-  Login: undefined // @demo remove-current-line
-  Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
-  TestScreen: undefined
+  Welcome?: undefined
+  Login?: undefined // @demo remove-current-line
+  Demo?: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
+  TestScreen?: undefined
+  SignUp?: undefined
+  Splash?: undefined
+  CreateAccount?: undefined
   // 🔥 Your screens go here
 }
 
@@ -70,7 +76,7 @@ const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={isAuthenticated ? "Welcome" : "Login"} // @demo remove-current-line
+      initialRouteName={isAuthenticated ? "Welcome" : "Splash"} // @demo remove-current-line
     >
       {/* @demo remove-block-start */}
       {isAuthenticated ? (
@@ -83,7 +89,9 @@ const AppStack = observer(function AppStack() {
       ) : (
         <>
           {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
-          <Stack.Screen name="TestScreen" component={TestScreen} />
+          <Stack.Screen name="Splash" component={Splash} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="CreateAccount" component={CreateAccount} />
         </>
       )}
       {/* @demo remove-block-end */}
